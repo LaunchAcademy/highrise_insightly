@@ -1,14 +1,23 @@
 module HighriseInsightly
-  class Contact < Insightly2::Resources::Contact
+  class Contact
     class << self
-      def fetch(email)
-        insightly_client.get_contacts(email: @email).first
+      def fetch(email, first_name = nil, last_name = nil)
+        if email
+          insightly_client.get('contacts', {
+            email: email
+          })
+        else
+          insightly_client.get('contacts', {
+            '$filter' => "FIRST_NAME eq '#{first_name}' " +
+              "and LAST_NAME eq '#{last_name}'"
+          })
+        end
       end
-    end
 
-    protected
-    def insightly_client
-      Insightly.client
+      protected
+      def insightly_client
+        HighriseInsightly.insightly_client
+      end
     end
   end
 end
