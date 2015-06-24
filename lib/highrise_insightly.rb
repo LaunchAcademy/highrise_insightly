@@ -16,7 +16,7 @@ module HighriseInsightly
 
     def insightly_client
       Faraday.new(url: [host,path].join('/')) do |faraday|
-        faraday.request  :url_encoded
+        faraday.request :json
         faraday.response :json
         faraday.basic_auth api_key, ''
         faraday.adapter Faraday.default_adapter
