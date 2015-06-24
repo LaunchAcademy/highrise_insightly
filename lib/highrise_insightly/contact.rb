@@ -5,19 +5,38 @@ module HighriseInsightly
     end
 
     def save_note(note)
-      resp = insightly_client.post('Notes', {
-        'TITLE' => "Highrise Note Import From #{note.written}",
+      params = {
+        'TITLE' => "Highrise Note Import",
         'BODY' => note.body,
         'LINK_SUBJECT_ID' => @id,
         'LINK_SUBJECT_TYPE' => 'CONTACT',
-        'DATE_CREATED_UTC' => note.written.utc.to_s.gsub(" UTC", "")
-      })
+      }
 
-      if resp.status == 201
-        true
-      else
-        false
+      if note.written
+        params['TITLE'] += " FROM #{note.written}"
+        params['DATE_CREATED_UTC'] = note.written.utc.to_s.gsub(" UTC", "")
       end
+
+      resp = insightly_client.post('Notes', params)
+
+      resp.status == 201
+    end
+
+    def save_email(email)
+      params = {
+        'TITLE' => email.subject,
+        'BODY' => email.body,
+        'LINK_SUBJECT_ID' => @id,
+        'LINK_SUBJECT_TYPE' => 'CONTACT',
+      }
+
+      if !email.written.nil?
+        params['DATE_CREATED_UTC'] = email.written.utc.to_s.gsub(" UTC", "")
+      end
+
+      resp = insightly_client.post('Notes', params)
+
+      resp.status == 201
     end
 
     protected

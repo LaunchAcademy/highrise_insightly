@@ -23,7 +23,10 @@ module HighriseInsightly
       end
 
       def written
-        @written ||= Chronic.parse(@data["Written"])
+        if !@written  && @data["Written"]
+          @written = Chronic.parse(@data["Written"])
+        end
+        @written
       end
     end
   end
