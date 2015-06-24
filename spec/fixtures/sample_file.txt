@@ -1,0 +1,38 @@
+---
+- ID: 180985073
+  Name: John Smith
+- Company: 
+  ID: 179631092
+  Name: Acme
+- Contact: 
+  - 
+    - Addresses
+    - 
+      - ", Providence, RI, , "
+  - 
+    - Email_addresses
+    - 
+      - john@example.com
+- Note 182425845: 
+  - 
+    Author: Corinne B.
+  - 
+    Written: "September 19, 2013 22:03"
+  - 
+    About: John Smith
+  - 
+    Body: Inmailed
+- Email 267583561: 
+  - 
+    Author: Corinne B.
+  - 
+    Written: "January 08, 2015 15:10"
+  - 
+    About: John Smith
+  - 
+    Subject: "This is an email"
+  - 
+    Body: |-
+      Hi John,
+
+      This is an email
