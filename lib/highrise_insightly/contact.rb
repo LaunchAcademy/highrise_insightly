@@ -59,7 +59,7 @@ module HighriseInsightly
         end
 
         if resp.status == 200
-          new(resp.body[0])
+          resp.body[0].nil? ? nil : new(resp.body[0])
         end
       end
 

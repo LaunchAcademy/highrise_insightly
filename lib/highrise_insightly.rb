@@ -5,6 +5,9 @@ require "highrise_insightly/contact"
 require "highrise_insightly/highrise/note"
 require "highrise_insightly/highrise/email"
 require "highrise_insightly/highrise/file"
+require "highrise_insightly/highrise/file_list"
+require "highrise_insightly/file_import"
+require "highrise_insightly/command_line_interface"
 
 require "highrise_insightly/version"
 

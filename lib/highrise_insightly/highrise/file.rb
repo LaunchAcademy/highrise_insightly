@@ -5,7 +5,11 @@ module HighriseInsightly
     class File
       def initialize(path)
         @path = path
-        @contents = YAML.load(::File.read(@path))
+        begin
+          @contents = YAML.load(::File.read(@path))
+        rescue Psych::SyntaxError
+          @contents = []
+        end
 
         @data = @contents.inject do |map, content|
           [
