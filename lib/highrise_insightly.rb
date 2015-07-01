@@ -2,6 +2,7 @@ require "faraday"
 require "faraday_middleware"
 
 require "highrise_insightly/contact"
+require "highrise_insightly/organization"
 require "highrise_insightly/highrise/note"
 require "highrise_insightly/highrise/email"
 require "highrise_insightly/highrise/file"

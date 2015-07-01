@@ -9,7 +9,7 @@ module HighriseInsightly
         'TITLE' => "Highrise Note Import",
         'BODY' => note.body,
         'LINK_SUBJECT_ID' => @id,
-        'LINK_SUBJECT_TYPE' => 'CONTACT',
+        'LINK_SUBJECT_TYPE' => link_subject_type,
       }
 
       if note.written
@@ -27,7 +27,7 @@ module HighriseInsightly
         'TITLE' => email.subject,
         'BODY' => email.body,
         'LINK_SUBJECT_ID' => @id,
-        'LINK_SUBJECT_TYPE' => 'CONTACT',
+        'LINK_SUBJECT_TYPE' => link_subject_type,
       }
 
       if !email.written.nil?
@@ -67,6 +67,10 @@ module HighriseInsightly
       def insightly_client
         HighriseInsightly.insightly_client
       end
+    end
+
+    def link_subject_type
+      'CONTACT'
     end
   end
 end
