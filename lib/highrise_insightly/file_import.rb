@@ -5,12 +5,13 @@ module HighriseInsightly
     end
 
     def perform
-      require 'pry'
       @file_list.each do |file|
         #look for an organization first
-        contact = HighriseInsightly::Organization.fetch(file.name)
+        if !file.name.nil?
+          contact = HighriseInsightly::Organization.fetch(file.name)
+        end
 
-        if contact.nil?
+        if contact.nil? && !file.name.nil?
           first_name, last_name = *file.name.split(' ', 2)
           contact = HighriseInsightly::Contact.fetch(file.email,
             first_name, last_name)

@@ -11,7 +11,7 @@ module HighriseInsightly
           @contents = []
         end
 
-        @data = @contents.inject do |map, content|
+        @data = @contents.inject({}) do |map, content|
           [
             "Name"
           ].each do |attribute|
